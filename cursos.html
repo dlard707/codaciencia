@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Codaciencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+      :root {
+        --background: linear-gradient(to bottom right, #f0f2ff, #fde6e8);
+        --card-background: rgba(255, 255, 255, 0.95);
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a5568;
+        --border-color: #e2e8f0;
+        --hover-background: rgba(0, 0, 0, 0.05);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .bg-gradient-to-br {
+        background-image: var(--background);
+      }
+
+      .bg-white\/80, .bg-white\/90 {
+        background-color: var(--card-background);
+      }
+
+      .text-gray-800, .text-gray-900 {
+        color: var(--text-primary);
+      }
+
+      .text-gray-600, .text-gray-700 {
+        color: var(--text-secondary);
+      }
+
+      .hover\:bg-gray-100:hover {
+        background-color: var(--hover-background);
+      }
+
+      .border-blue-500 {
+        border-color: var(--border-color);
+      }
+
+      .text-transparent {
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .bg-clip-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .menu-open {
+        transform: translateX(0);
+      }
+
+      .menu-closed {
+        transform: translateX(100%);
+      }
+
+      /* Estilos do tema dark */
+      .dark-theme {
+        color: var(--text-primary);
+      }
+
+      .dark-theme .bg-white\/80,
+      .dark-theme .bg-white\/90 {
+        background-color: var(--card-background);
+      }
+
+      .dark-theme .text-gray-800,
+      .dark-theme .text-gray-900 {
+        color: var(--text-primary);
+      }
+
+      .dark-theme .text-gray-600,
+      .dark-theme .text-gray-700 {
+        color: var(--text-secondary);
+      }
+
+      .dark-theme .hover\:bg-gray-100:hover {
+        background-color: var(--hover-background);
+      }
+
+      .dark-theme .border-blue-500 {
+        border-color: var(--border-color);
+      }
+
+      .dark-theme .text-blue-600 {
+        color: #93c5fd;
+      }
+
+      .dark-theme .hover\:text-blue-800:hover {
+        color: #bfdbfe;
+      }
+
+      .dark-theme .bg-green-100 {
+        background-color: rgba(34, 197, 94, 0.2);
+      }
+
+      .dark-theme .text-green-800 {
+        color: #4ade80;
+      }
+    </style>
+</head>
+<body class="bg-gradient-to-br min-h-screen">
+    <!-- Botão de Tema -->
+    <button id="themeButton" onclick="toggleTheme()" class="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white/80 backdrop-blur-md shadow-lg dark:bg-gray-800/80">
+        <div id="themeIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </div>
+    </button>
+
+    <!-- Menu Hamburguer -->
+    <button id="menuButton" class="fixed top-4 right-4 z-50 p-2 rounded-lg bg-white/80 backdrop-blur-md shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+
+    <!-- Menu Lateral -->
+    <nav id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-white/90 backdrop-blur-md shadow-lg menu-closed transition-transform duration-300 z-40">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-teal-500 text-transparent bg-clip-text">Codaciencia</h2>
+            <ul class="space-y-4">
+                <li><a href="index.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Início</a></li>
+                <li><a href="cursos.html" class="block py-2 px-4 rounded-lg bg-gray-100">Cursos</a></li>
+                <li><a href="trabalhos.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Trabalhos</a></li>
+                <li><a href="python-course.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Curso de Python</a></li>
+                <li><a href="roblox-course.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Curso de Roblox</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="w-full bg-white/80 backdrop-blur-md shadow-lg py-4">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <img src="CodacienciaCabe.png" 
+                 alt="Codaciencia Logo" 
+                 class="h-12 w-auto">
+        </div>
+    </header>
+
+    <div class="flex flex-col items-center justify-center py-10">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-center text-gray-800 mb-8 bg-gradient-to-r from-blue-500 to-teal-500 text-transparent bg-clip-text">
+            Nossos Cursos
+        </h1>
+
+        <main class="w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg transition-transform transform hover:scale-105 p-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2 w-6 h-6"><path d="m16 18 4-4-4-4"/><path d="m8 6 4 4-4 4"/><path d="M21 16.95V15c0-1.66-1.28-3-2.88-3H9.88C8.28 12 7 13.34 7 15v1.95a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-4a3 3 0 0 0-3-3Z"/></svg>
+                        Programação para Crianças
+                    </h2>
+                    <p class="text-gray-700">Introdução ao mundo da programação com Scratch e Python. Desenvolva o pensamento lógico e a criatividade.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg transition-transform transform hover:scale-105 p-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad-2 w-6 h-6"><path d="M10 5a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/><path d="M7 11v7a5 5 0 0 0 5 5h2a5 5 0 0 0 5-5v-7"/><path d="M15.5 14h-7"/><path d="M3 6v4c0 2.65 1.5 4.97 3.5 6.36"/><path d="M21 6v4c0 2.65-1.5 4.97-3.5 6.36"/></svg>
+                        Criação de Jogos
+                    </h2>
+                    <p class="text-gray-700">Aprenda a projetar e programar seus próprios jogos com Unity. Dê vida às suas ideias e torne-se um desenvolvedor de jogos.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg transition-transform transform hover:scale-105 p-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chip w-6 h-6"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 18v-4"/><path d="M15 18v-4"/><path d="M5 8h14"/><path d="M5 12h14"/></svg>
+                        Arduino
+                    </h2>
+                    <p class="text-gray-700">Explore a eletrônica e a programação com Arduino. Crie projetos interativos e descubra a Internet das Coisas.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="py-6 text-center text-gray-500 text-sm">
+        © 2024 Codaciencia. Todos os direitos reservados.
+    </footer>
+
+    <script src="menu.js"></script>
+    <script src="theme-manager.js"></script>
+</body>
+</html> 

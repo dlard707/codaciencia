@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Python - Codaciencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+      :root {
+        --background: linear-gradient(to bottom right, #f0f2ff, #fde6e8);
+        --card-background: rgba(255, 255, 255, 0.95);
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a5568;
+        --border-color: #e2e8f0;
+        --hover-background: rgba(0, 0, 0, 0.05);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .bg-gradient-to-br {
+        background-image: var(--background);
+      }
+
+      .bg-white\/80, .bg-white\/90 {
+        background-color: var(--card-background);
+      }
+
+      .text-gray-800, .text-gray-900 {
+        color: var(--text-primary);
+      }
+
+      .text-gray-600, .text-gray-700 {
+        color: var(--text-secondary);
+      }
+
+      .hover\:bg-gray-100:hover {
+        background-color: var(--hover-background);
+      }
+
+      .border-blue-500 {
+        border-color: var(--border-color);
+      }
+
+      .text-transparent {
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .bg-clip-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      .menu-open {
+        transform: translateX(0);
+      }
+
+      .menu-closed {
+        transform: translateX(100%);
+      }
+
+      /* Estilos do tema dark */
+      .dark-theme {
+        color: var(--text-primary);
+      }
+
+      .dark-theme .bg-white\/80,
+      .dark-theme .bg-white\/90 {
+        background-color: var(--card-background);
+      }
+
+      .dark-theme .text-gray-800,
+      .dark-theme .text-gray-900 {
+        color: var(--text-primary);
+      }
+
+      .dark-theme .text-gray-600,
+      .dark-theme .text-gray-700 {
+        color: var(--text-secondary);
+      }
+
+      .dark-theme .hover\:bg-gray-100:hover {
+        background-color: var(--hover-background);
+      }
+
+      .dark-theme .border-blue-500 {
+        border-color: var(--border-color);
+      }
+
+      .dark-theme .text-blue-600 {
+        color: #93c5fd;
+      }
+
+      .dark-theme .hover\:text-blue-800:hover {
+        color: #bfdbfe;
+      }
+
+      .dark-theme .bg-green-100 {
+        background-color: rgba(34, 197, 94, 0.2);
+      }
+
+      .dark-theme .text-green-800 {
+        color: #4ade80;
+      }
+    </style>
+</head>
+<body class="bg-gradient-to-br min-h-screen">
+    <!-- Botão de Tema -->
+    <button id="themeButton" onclick="toggleTheme()" class="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white/80 backdrop-blur-md shadow-lg dark:bg-gray-800/80">
+        <div id="themeIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </div>
+    </button>
+
+    <!-- Menu Hamburguer -->
+    <button id="menuButton" class="fixed top-4 right-4 z-50 p-2 rounded-lg bg-white/80 backdrop-blur-md shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+
+    <!-- Menu Lateral -->
+    <nav id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-white/90 backdrop-blur-md shadow-lg menu-closed transition-transform duration-300 z-40">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-teal-500 text-transparent bg-clip-text">Codaciencia</h2>
+            <ul class="space-y-4">
+                <li><a href="index.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Início</a></li>
+                <li><a href="cursos.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Cursos</a></li>
+                <li><a href="trabalhos.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Trabalhos</a></li>
+                <li><a href="python-course.html" class="block py-2 px-4 rounded-lg bg-gray-100">Curso de Python</a></li>
+                <li><a href="roblox-course.html" class="block py-2 px-4 rounded-lg hover:bg-gray-100">Curso de Roblox</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="w-full bg-white/80 backdrop-blur-md shadow-lg py-4">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <img src="CodacienciaCabe.png" 
+                 alt="Codaciencia Logo" 
+                 class="h-12 w-auto">
+        </div>
+    </header>
+
+    <div class="flex flex-col items-center justify-center py-10">
+        <main class="w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-center text-gray-800 mb-8 bg-gradient-to-r from-blue-500 to-teal-500 text-transparent bg-clip-text">
+                Curso de Python
+            </h1>
+
+            <div class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Informações do Curso</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Instrutor</h3>
+                        <p class="text-gray-600">Professor David Larronda</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Nível</h3>
+                        <p class="text-gray-600">Iniciante ao Intermediário</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <section class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Introdução à Programação</h2>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Aula 1 - Introdução ao Python</h3>
+                            <p class="text-gray-600 mt-2">Conheça os fundamentos da linguagem Python e prepare seu ambiente de desenvolvimento.</p>
+                            <div class="mt-2 flex items-center gap-4">
+                                <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-sm">GRATUITO</span>
+                                <a href="https://hourofpython.trinket.io/from-blocks-to-code-with-trinket#/blocks/dragging-and-dropping" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    Acessar Material
+                                </a>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Aula 2 - Loops em Python</h3>
+                            <p class="text-gray-600 mt-2">Aprenda a usar loops e estruturas de repetição para automatizar tarefas.</p>
+                            <div class="mt-2 flex items-center gap-4">
+                                <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-sm">GRATUITO</span>
+                                <a href="https://hourofpython.trinket.io/from-blocks-to-code-with-trinket#/loops/repeating-things" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    Acessar Material
+                                </a>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Aula 3 - Funções em Python</h3>
+                            <p class="text-gray-600 mt-2">Domine o conceito de funções e aprenda a criar código reutilizável.</p>
+                            <div class="mt-2 flex items-center gap-4">
+                                <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-sm">GRATUITO</span>
+                                <a href="https://hourofpython.trinket.io/from-blocks-to-code-with-trinket#/functions/functions-are-recipes" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                    Acessar Material
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="mt-8 text-center">
+                <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold py-3 px-6 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Começar o Curso
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <footer class="py-6 text-center text-gray-500 text-sm">
+        © 2024 Codaciencia. Todos os direitos reservados.
+    </footer>
+
+    <script src="menu.js"></script>
+    <script src="theme-manager.js"></script>
+</body>
+</html> 
